@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="px-3">New Review</h1>
+<p class="px-3"> Here you can create a new review.
+</p>
+
+<form action="" class="px-3" name="reviewForm" method="post">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <h3>Title</h3>
+        <p> {{form.title}} </p>
+    </div>
+    <div class="form-group">
+        <h3>Artist</h3>
+        <p> {{form.artist}}</p>
+    </div>
+    <div class="form-group">
+        <h3>Review</h3>
+        <p> {{form.review}}</p>
+    </div>
+    <div class="form-group">
+        <h3>Rating</h3>
+        <p> {{form.rating}}</p>
+    </div>
+
+    <input class="button" type="submit" value="Submit">
+
+</form>
+
+
+
+{% endblock %}

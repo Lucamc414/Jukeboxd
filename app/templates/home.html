@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="px-3">Jukeboxd</h1>
+<div class="px-3">
+    <p> Welcome to jukeboxd.</p>
+    <img src="{{ url_for('static', filename='vinyl.png') }}" alt="vinyl">
+</div>
+
+<div class="search-container">
+    <form class="form-inline">
+      <div class="form-group">
+        <input type="text" class="form-control searchbar" placeholder="Search">
+      </div>
+    </form>
+</div>
+
+<img src="{{ url_for('static', filename='jukeboxMade.png') }}" alt="jukebox">
+
+<input class="button" type="button" value="New Review" onclick="newReview()">
+
+{% endblock %}

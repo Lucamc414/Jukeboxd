@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="px-3">Reviews</h1>
+<p class="px-3"> Here you can see your reviews.
+</p>
+
+<div class="search-container">
+    <form class="form-inline">
+      <div class="form-group">
+        <input type="text" class="form-control searchbar" placeholder="Search">
+      </div>
+    </form>
+</div>
+
+{% for review in reviews %}
+<div class="data-panel">
+  <h3>{{review.title}}</h3>
+  <h3 class ="rating">{{review.rating}}/5</h3>
+  <h3> {{review.artist}}</h3>
+  <p> {{review.review}} </p>
+</div>
+{% endfor %}
+
+{% endblock %}
