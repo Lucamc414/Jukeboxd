@@ -5,6 +5,8 @@
 <p class="px-3"> Here you can see your reviews.
 </p>
 
+<input class="button" type="button" value="New Review" onclick="newReview()">
+
 <div class="search-container">
     <form class="form-inline">
       <div class="form-group">
@@ -19,6 +21,7 @@
   <h3 class ="rating">{{review.rating}}/5</h3>
   <h3> {{review.artist}}</h3>
   <p> {{review.review}} </p>
+  <p> {{review.username}} </p>
 </div>
 {% endfor %}
 

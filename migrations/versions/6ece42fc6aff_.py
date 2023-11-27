@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 492ab3b424f7
+Revision ID: 6ece42fc6aff
 Revises: 
-Create Date: 2023-11-15 11:18:16.577637
+Create Date: 2023-11-21 12:45:35.983402
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '492ab3b424f7'
+revision = '6ece42fc6aff'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -24,6 +24,7 @@ def upgrade():
     sa.Column('artist', sa.String(length=50), nullable=True),
     sa.Column('review', sa.String(length=500), nullable=True),
     sa.Column('rating', sa.Integer(), nullable=True),
+    sa.Column('username', sa.String(length=50), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     with op.batch_alter_table('review', schema=None) as batch_op:
@@ -31,6 +32,7 @@ def upgrade():
         batch_op.create_index(batch_op.f('ix_review_rating'), ['rating'], unique=False)
         batch_op.create_index(batch_op.f('ix_review_review'), ['review'], unique=False)
         batch_op.create_index(batch_op.f('ix_review_title'), ['title'], unique=False)
+        batch_op.create_index(batch_op.f('ix_review_username'), ['username'], unique=False)
 
     op.create_table('song',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -74,6 +76,7 @@ def downgrade():
 
     op.drop_table('song')
     with op.batch_alter_table('review', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_review_username'))
         batch_op.drop_index(batch_op.f('ix_review_title'))
         batch_op.drop_index(batch_op.f('ix_review_review'))
         batch_op.drop_index(batch_op.f('ix_review_rating'))

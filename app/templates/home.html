@@ -3,7 +3,10 @@
 
 <h1 class="px-3">Jukeboxd</h1>
 <div class="px-3">
-    <p> Welcome to jukeboxd.</p>
+  {% if username %}
+    <p>Welcome {{ username }}!</p>
+  {% endif %}
+    <p>Welcome to jukeboxd.</p>
     <img src="{{ url_for('static', filename='vinyl.png') }}" alt="vinyl">
 </div>
 
