@@ -1,0 +1,18 @@
+functionality to add
+
+reviews form
+- search
+- filter 
+- edit
+- delete
+
+explore
+- refresh (get 10 new random reviews)
+
+profile 
+- set up profile page
+- edit details
+- pinned songs
+
+
+

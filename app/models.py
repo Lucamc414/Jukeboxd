@@ -7,6 +7,7 @@ class Review(db.Model):
     artist = db.Column(db.String(50), index=True)
     review = db.Column(db.String(500), index=True)
     rating = db.Column(db.Integer, index=True)
+    album = db.Column(db.String(50), index=True)
     username = db.Column(db.String(50), index=True)
 
 class User(UserMixin, db.Model):
@@ -14,13 +15,11 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(50), index=True)
     password = db.Column(db.String(50), index=True)
     email = db.Column(db.String(50), index=True)
-    #reviews = db.relationship('Review', backref='author', lazy='dynamic')
+    profile_photo = db.Column(db.String(100), index=True)
 
-class Song(db.Model):
+
+class Albums(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), index=True)
     artist = db.Column(db.String(50), index=True)
     genre = db.Column(db.String(50), index=True)
-
-
-

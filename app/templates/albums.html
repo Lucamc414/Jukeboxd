@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="px-3">Albums</h1>
+<p class="px-3"> Here you can view all the albums in our database.
+</p>
+
+<div class="search-container">
+    <form class="form-inline">
+      <div class="form-group">
+        <input type="text" class="form-control searchbar" placeholder="Search">
+      </div>
+    </form>
+</div> 
+
+<div>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Album</th>
+      <th>Artist</th>
+      <th>Genre</th>
+    </tr>
+    {% for album in albums %}
+    <tr>
+      <td>{{album.id}}</td>
+      <td>{{album.title}}</td>
+      <td>{{album.artist}}</td>
+      <td>{{album.genre}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+
+{% endblock %}

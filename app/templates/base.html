@@ -29,10 +29,16 @@
         <li tabIndex="2" class="nav-item"><a class="nav-link nav-color" href="/explore">Explore <span
               class="sr-only">(current)</span></a></li>
         <li tabIndex="3" class="nav-item"><a class="nav-link nav-color" href="/reviews">Reviews</a></li>
+        <li tabIndex="4" class="nav-item"><a class="nav-link nav-color" href="/albums">Albums</a></li>
       </ul>
       <ul class="navbar-nav ml-auto">
+        {% if current_user.is_authenticated %}
+        <li tabIndex="4" class="nav-item"><a class="nav-link nav-color px-3" href="/logout">Log out</a></li>
+        <li tabIndex="5" class="nav-item"><a class="nav-link nav-color" href="/profile">Profile</a></li>
+        {% else %}
         <li tabIndex="4" class="nav-item"><a class="nav-link nav-color" href="/login">Log in</a></li>
         <li tabIndex="5" class="nav-item"><a class="nav-link nav-color" href="/register">Register</a></li>
+        {% endif %}
       </ul>
     </div>
   </nav>

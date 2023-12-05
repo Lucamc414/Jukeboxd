@@ -18,7 +18,7 @@
     </form>
 </div>
 
-<img src="{{ url_for('static', filename='jukeboxMade.png') }}" alt="jukebox">
+<img src="{{ url_for('static', filename='jukeboxMade.png') }}" alt="jukebox" onclick="jukebox('{{album.title}}', '{{album.artist}}')">
 
 <input class="button" type="button" value="New Review" onclick="newReview()">
 

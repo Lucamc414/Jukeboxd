@@ -8,12 +8,16 @@
 <form action="" class="px-3" name="reviewForm" method="post">
     {{ form.hidden_tag() }}
     <div class="form-group">
+        <h3>Album</h3>
+        <p> {{form.album(id="album-select")}} </p>
+    </div>
+    <div class="form-group">
         <h3>Title</h3>
         <p> {{form.title}} </p>
     </div>
     <div class="form-group">
         <h3>Artist</h3>
-        <p> {{form.artist}}</p>
+        <p> {{form.artist(id="artist-textbox")}}</p>
     </div>
     <div class="form-group">
         <h3>Review</h3>

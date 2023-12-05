@@ -1,18 +1,23 @@
 # all required imports
 from flask_login import login_user, login_required, current_user, logout_user
+from flask_admin.contrib.sqla import ModelView
 from flask import Blueprint, render_template, redirect, url_for, request, jsonify, flash, session
 from app import app, models, db, admin
 from .forms import reviewForm, loginForm, registerForm
-from flask_admin.contrib.sqla import ModelView
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
 from flask import Flask
+import random
+import os
+import tkinter as tk
+from tkinter import messagebox
 
 
 
 # add admin table views
 admin.add_view(ModelView(models.Review, db.session))
 admin.add_view(ModelView(models.User, db.session))
-admin.add_view(ModelView(models.Song, db.session))
+admin.add_view(ModelView(models.Albums, db.session))
 
 
 # home route
@@ -22,7 +27,13 @@ def home():
         username = current_user.username
     else:
         username = "Guest"
-    return render_template("home.html", title="Home", username=username)
+
+
+    albumsList = models.Albums.query.all()
+    album = random.choice(albumsList)
+
+
+    return render_template("home.html", title="Home", username=username, album = album)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -43,12 +54,16 @@ def login():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+
     form = registerForm()
 
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         email = request.form['email']
+        #profile_photo = request.files['profile_picture']
+        profile_photo = 'app/static/profile.png'
+
 
         user = models.User.query.filter_by(email=email).first()
 
@@ -57,7 +72,12 @@ def register():
             return redirect(url_for("register"))
         
         password = generate_password_hash(password, method='pbkdf2:sha256')
-        new_user = models.User(email=email, username=username,password=password )
+
+        # Save the profile photo to a specific location
+
+        #profile_photo.save(os.path.join(app.config['UPLOAD_FOLDER'], profile_photo))
+
+        new_user = models.User(email=email, username=username,password=password, profile_photo=profile_photo)
 
         db.session.add(new_user)
         db.session.commit()
@@ -72,11 +92,18 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
+@app.route('/profile')
+@login_required
+def profile():
+
+    user = models.User.query.filter_by(username=current_user.username).first()
+    return render_template("profile.html", title="Profile", user = user)
+
 @app.route("/reviews", methods=["GET", "POST"])
 @login_required
 def reviews():
 
-    username = session.get('username')
+    username = current_user.username
     user_reviews = models.Review.query.filter_by(username=username).all()
     return render_template("reviews.html", title="Reviews", reviews=user_reviews)
 
@@ -87,6 +114,13 @@ def explore():
 
     return render_template("explore.html", title="Explore", explore = exploreReviews)
 
+@app.route("/albums", methods=["GET", "POST"])
+def albums():
+
+    albums = models.Albums.query.all()
+
+    return render_template("albums.html", title="Albums", albums=albums)
+
 @app.route("/newReview", methods=["GET", "POST"])
 def newReview():
     
@@ -95,7 +129,7 @@ def newReview():
 
     if form.validate_on_submit():
         print('here')
-        p = models.Review(title=form.title.data, artist=form.artist.data, review = form.review.data, rating = form.rating.data, username=username)
+        p = models.Review(title=form.title.data, artist=form.artist.data, review = form.review.data, rating = form.rating.data, username=username, album=form.album.data)
         db.session.add(p)
         db.session.commit()
         return redirect(url_for("reviews"))

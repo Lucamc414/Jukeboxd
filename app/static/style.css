@@ -16,6 +16,12 @@ body {
 
 }
 
+.profile-picture {
+
+    height: 60px;
+    width: 60px;
+}
+
 .navbar {
     background-color: #F478FF !important;
     border-radius: 50px;
@@ -111,3 +117,31 @@ img {
     font-weight: bold;
     color: #000000;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-spacing: 0 10px;
+}
+
+th, td {
+    border: 5px solid #000000;
+    padding: 12px;
+    text-align: left;
+
+}
+
+th {
+    background-color: #F478FF;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #F478FF;
+}
+
+tr:nth-child(odd) {
+    background-color: #FFFFFF;
+}
+
