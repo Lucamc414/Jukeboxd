@@ -7,17 +7,27 @@
 
 <form action="" class="px-3" name="albumForm" method="post">
     {{ form.hidden_tag() }}
-    <div class="form-group">
-        <h3>Album Title</h3>
-        <p> {{form.title(id="album-title")}} </p>
+   
+
+    <div class="data-panel2">
+        <div class="form-group">
+            <h3>Album Title</h3>
+            <p> {{form.title(id="album-title")}} </p>
+        </div>
     </div>
-    <div class="form-group">
-        <h3>Artist/ Band</h3>
-        <p> {{form.artist}} </p>
+    
+    <div class="data-panel2">
+        <div class="form-group">
+            <h3>Artist/ Band</h3>
+            <p> {{form.artist}} </p>
+        </div>
     </div>
-    <div class="form-group">
-        <h3>Genre</h3>
-        <p> {{form.genre(id="album-genre")}}</p>
+    
+    <div class="data-panel2">
+        <div class="form-group">
+            <h3>Genre</h3>
+            <p> {{form.genre(id="album-genre")}}</p>
+        </div>
     </div>
 
     <input class="button" type="submit" value="Submit">

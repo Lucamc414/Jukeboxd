@@ -6,6 +6,7 @@
     font-style: normal;
 }
 
+
 body {
     background-color: #FFEF64;
     margin-top: 20px;
@@ -30,6 +31,9 @@ body {
 
 .searchbar{
     border-radius: 50px;
+    border: 5px solid black;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
     padding-left: 20px;
 }
 
@@ -49,18 +53,6 @@ text-transform: uppercase;
 font-family: 'Inter', sans-serif;
 letter-spacing: 0.2em;
 text-shadow: 6px 6px 0px #000000;
-}
-
-form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
-  }
-
-.form-group {
-display: grid;
-grid-template-columns: 1fr 2fr;
-grid-gap: 20px;
 }
 
 .text-box {
@@ -110,7 +102,10 @@ img {
     padding: 20px;
     margin: 20px;
     position: relative;
-
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
   }
 
   .data-panel:hover {
@@ -176,7 +171,12 @@ tr:nth-child(odd) {
     background-color: #F478FF;
     max-width: 100%; /* Set the maximum width to 100% */
     height: auto; 
+    width: 30%;
 
+}
+
+.jukebox:hover {
+  cursor: pointer;
 }
 
 .container {
@@ -207,3 +207,68 @@ tr:nth-child(odd) {
     align-items: center; /* Vertically center the items */
     margin-bottom: 10px;
   }
+
+.spanning-button {
+  width: 100%;
+}
+
+
+.container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.left-panel {
+  flex: 1;
+}
+
+.middle-panel {
+  flex: 1;
+}
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.button {
+  margin-bottom: 10px;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width:180%;
+  margin-bottom: 83px;
+  margin-left: 50px;
+  
+}
+.vertical:hover {
+  cursor: default;
+  
+}
+
+.data-panel3 {
+  background-color: #F478FF;
+  border: 5px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 5px;
+  margin-left: 50px;
+  padding-bottom: 70px;
+  /* position: relative; */
+  /* display: flex; */
+  /* flex-direction: column;
+  align-items: stretch; */
+  width: 100%;
+}
+
+.select-field {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+}

@@ -17,9 +17,9 @@ function albumChanged()
 
 // function jukebox(dataList)
 
-function jukebox(album, artist)
+function jukebox(album, artist, bestGenre)
 {
-  alert("jukebox's recommendation for you is: " + album + " by " + artist);
+  alert("Jukeboxd's recommendation for you is:\n" + album + " by " + artist +"\n\nYour favourite genre is: " + bestGenre);
   window.location.href = "/";
 }
 
@@ -50,4 +50,38 @@ function filterTable() {
   }
 
 
+}
+
+document.getElementById("album-search").addEventListener("input", function() {
+  // Call a function to handle the search logic
+  alert("not implemented yet");
+});
+
+// does not work
+function searchAlbums(query) {
+  var table = document.getElementById("albums-table");
+  var rows = table.getElementsByTagName("td");
+  var titles = rows.getElementById("album-title");
+  alert(titles.length);
+
+  // Loop through each row of the table
+  for (var i = 0; i < rows.length; i++) {
+    var row = rows[i];
+    var albumTitle = row.getElementsByClassName("album-title")[0].innerHTML;
+    alert(albumTitle);
+   
+    // Check if the album title matches the search query
+    if (albumTitle.toLowerCase().includes(query.toLowerCase())) {
+      // Show the row if it matches the search query
+      row.style.display = "table-row";
+    } else {
+      // Hide the row if it doesn't match the search query
+      row.style.display = "none";
+    }
+  }
+}
+
+function refresh()
+{
+  window.location.href = "/explore";
 }

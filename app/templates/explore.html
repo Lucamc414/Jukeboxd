@@ -5,6 +5,8 @@
 <p class="px-3"> Here you can explore. You can search for songs, artists, albums, and playlists
 </p>
 
+<input class="button spanning-button" type="button" value="See more reviews" onclick="refresh()">
+
 {% for review in explore %}
 <div class="data-panel" onclick="viewReview('{{review.id}}')">
   <div> 

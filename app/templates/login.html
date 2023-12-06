@@ -5,12 +5,16 @@
 
 <form action="" class="px-3" name="loginForm" method="post">
     {{ form.hidden_tag() }}
-    <h3>Username</h3>
-    <p> {{form.username}} </p>
 
-    <h3>Password</h3>
-    <p> {{form.password}}</p>
+    <div class="data-panel2">
+        <h3>Username</h3>
+        <p> {{form.username}} </p>  
+    </div>
 
+    <div class="data-panel2">
+        <h3>Password</h3>
+        <p> {{form.password}}</p>  
+    </div>
 
     <input class="button" type="submit" value="Submit">
 

@@ -1,20 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div>
 <h1 class="px-3">Albums</h1>
 <p class="px-3"> Here you can view all the albums in our database.
 </p>
 
-<div class="search-container" id="albums-search">
+<div class="search-container">
 
-  <input type="text" class="form-control searchbar" placeholder="Search">
+  <input type="text" id="album-search"class="form-control searchbar" placeholder="Search...">
 
 </div> 
 
 
 <div class="add-album-container">
 
-  <input class="button" type="button" value="Add Album" onclick="addAlbum()">
+  <input class="button spanning-button" type="button" value="Add Album" onclick="addAlbum()">
 
 </div>
 
@@ -29,18 +30,15 @@
     {% for album in albums %}
     <tr>
       <td>{{album.id}}</td>
-      <td>{{album.title}}</td>
+      <td class="album-title">{{album.title}}</td>
       <td>{{album.artist}}</td>
       <td>{{album.genre}}</td>
     </tr>
     {% endfor %}
   </table>
 </div>
+</div>
 
-<script>
-  const albumSearch = document.getElementById('album-search');
-  albumSearch.addEventListener('input', filterTable());
-</script>
 
 
 {% endblock %}

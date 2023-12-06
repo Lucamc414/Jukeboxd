@@ -2,18 +2,35 @@
 {% block content %}
 
 <h1 class="px-3">Profile</h1>
+
+
 <div class="px-3">
   {% if username %}
     <p>{{ username }}</p>
   {% endif %}
 
-  <div class="data-panel">
+  <div class="data-panel2">
 
     <p>Username: {{user.username}}</p>
     <p>Email: {{user.email}}</p>
     <img src="{{user.profile_picture}}" alt="Profile Picture woo" width="200" height="200">
 
-
   </div>
+
+  <div class="data-panel2">
+    <h3>Top Albums</h3>
+  </div>
+  {% if top_albums %}
+  {% for album in top_albums %}
+  <div class="data-panel2">
+    <p>{{album.title}}</p>
+    <p>{{album.artist}}</p>
+    <p>{{album.genre}}</p>
+    <p>{{album.rating}}</p>
+  </div>
+  {% endfor %}
+  {% else %}
+  <p>No albums yet!</p>
+  {% endif %}
 
 {% endblock %}

@@ -5,15 +5,8 @@
 <p class="px-3"> Here you can see your reviews.
 </p>
 
-<input class="button" type="button" value="New Review" onclick="newReview()">
-<!-- 
-<div class="search-container">
-    <form class="form-inline">
-      <div class="form-group">
-        <input type="text" class="form-control searchbar" placeholder="Search">
-      </div>
-    </form>
-</div> -->
+<input class="button spanning-button" type="button" value="New Review" onclick="newReview()">
+
 
 {% for review in reviews %}
 <div class="data-panel" onclick="viewReview('{{review.id}}')">

@@ -8,11 +8,17 @@ from app import models, app
 class reviewForm(FlaskForm):
     
     title = StringField('Title', validators=[DataRequired()], render_kw={"class": "text-box"})
-
+    choicesList =[]
     with app.app_context():
         albumsList = [album.title for album in models.Albums.query.all()]
-        print(albumsList)
-        choicesList = [(album, album) for album in albumsList]
+        # print(albumsList)
+        # choicesList = [(album, album) for album in albumsList]
+
+        for album in albumsList:
+            #get artist of album
+            artist = models.Albums.query.filter_by(title=album).first().artist
+            choicesList.append((album, f"{album} - {artist}"))
+
         album = SelectField('Album',choices= choicesList, validators=[DataRequired()])
 
     artist = StringField('Artist', validators=[DataRequired()], render_kw={"class": "text-box"})

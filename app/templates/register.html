@@ -5,21 +5,26 @@
 
 <form action="" class="px-3" name="registerForm" method="post">
     {{ form.hidden_tag() }}
-    <h3>Email</h3>
-    <p> {{form.email}} </p>
+    <div class="data-panel2">
+        <h3>Email</h3>
+        <p> {{form.email}} </p>
+    </div>
+   
 
-    <h3>Username</h3>
-    <p> {{form.username}} </p>
-
-    <h3>Password</h3>
-    <p> {{form.password}}</p>
-
-    <h3>Confirm Password</h3>
-    <p> {{form.passwordConfirm}}</p>
-
-    <h3>Profile Picture</h3>
-    <p> {{ form.profile_picture}}</p>
-
+    <div class="data-panel2">
+        <h3>Username</h3>
+        <p> {{form.username}} </p>    
+    </div>
+    
+    <div class="data-panel2">
+        <h3>Password</h3>
+        <p> {{form.password}}</p>   
+    </div>
+    
+    <div class="data-panel2">
+        <h3>Confirm Password</h3>
+        <p> {{form.passwordConfirm}}</p>   
+    </div>
 
     <input class="button" type="submit" value="Submit">
 

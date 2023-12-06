@@ -5,30 +5,37 @@
 <p class="px-3"> Here you can create a new review.
 </p>
 
-<form action="" class="px-3" name="reviewForm" method="post">
+<form action="" class="" name="reviewForm" method="post">
     {{ form.hidden_tag() }}
-    <div class="form-group">
-        <h3>Album</h3>
-        <p> {{form.album(id="album-select")}} </p>
+    <div class = data-panel2>
+        <div class="form-group">
+            <h3>Album</h3>
+            <p> {{form.album(id="album-select")}} </p>
+        </div>
     </div>
-    <div class="form-group">
-        <h3>Title</h3>
-        <p> {{form.title}} </p>
+    
+    <div class="data-panel2">
+        <div class="form-group">
+            <h3>Title</h3>
+            <p> {{form.title}} </p>
+        </div>
     </div>
-    <div class="form-group">
-        <h3>Artist</h3>
-        <p> {{form.artist(id="artist-textbox")}}</p>
+    
+    <div class="data-panel2">
+        <div class="form-group">
+            <h3>Review</h3>
+            <p> {{form.review}}</p>
+        </div>
     </div>
-    <div class="form-group">
-        <h3>Review</h3>
-        <p> {{form.review}}</p>
-    </div>
-    <div class="form-group">
-        <h3>Rating</h3>
-        <p> {{form.rating}}</p>
+   
+    <div class="data-panel2 ">
+        <div class="form-group">
+            <h3>Rating</h3>
+            <p class="select-field"> {{form.rating}}</p>
+        </div>
     </div>
 
-    <input class="button" type="submit" value="Submit">
+    <input class="button spanning-button" type="submit" value="Submit">
 
 </form>
 
