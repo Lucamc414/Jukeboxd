@@ -96,6 +96,26 @@ img {
   .data-panel {
     background-color: #F478FF;
     border: 5px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    position: relative;
+
+  }
+
+  .data-panel2 {
+    background-color: #F478FF;
+    border: 5px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    position: relative;
+
+  }
+
+  .data-panel:hover {
+    background-color: #f58bff;
+    border: 5px solid black;
     color: white;
     border-radius: 10px;
     padding: 20px;
@@ -111,8 +131,10 @@ img {
 
 .rating {
     position: absolute;
+    padding: 10px;
     top: 0;
     right: 0;
+    font-family: Arial, sans-serif;
     font-size: 1.5rem;
     font-weight: bold;
     color: #000000;
@@ -145,3 +167,43 @@ tr:nth-child(odd) {
     background-color: #FFFFFF;
 }
 
+.jukebox {
+    border: 5px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 5px;
+    position:relative;
+    background-color: #F478FF;
+    max-width: 100%; /* Set the maximum width to 100% */
+    height: auto; 
+
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    margin-left: 0px;
+    /* justify-content: flex-start;  */
+}
+
+.left-div, .right-div {
+    display: inline-block;
+  }
+  
+  .left-div {
+    background-color: #F478FF;
+    width: auto;
+    flex: 1;
+  }
+
+  .add-album-container {
+    display: flex;
+    align-items: center; /* Vertically center the items */
+  }
+
+
+  .search-container {
+    display: flex;
+    align-items: center; /* Vertically center the items */
+    margin-bottom: 10px;
+  }

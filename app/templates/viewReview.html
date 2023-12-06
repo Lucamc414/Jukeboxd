@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="px-3">{{review.title}} by {{review.username}}</h1>
+<div class="px-3">
+
+  <div class="data-panel2">
+
+    <h3>Album : {{review.album}}</h3>
+    <h3>By {{review.artist}}</h3>
+    <p class="rating">{{review.rating}}/5</p>
+    
+    <p>{{review.review}}</p>
+
+  </div>
+
+{% endblock %}

@@ -3,7 +3,7 @@ from flask_login import login_user, login_required, current_user, logout_user
 from flask_admin.contrib.sqla import ModelView
 from flask import Blueprint, render_template, redirect, url_for, request, jsonify, flash, session
 from app import app, models, db, admin
-from .forms import reviewForm, loginForm, registerForm
+from .forms import reviewForm, loginForm, registerForm, albumForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from flask import Flask
@@ -11,6 +11,8 @@ import random
 import os
 import tkinter as tk
 from tkinter import messagebox
+from collections import Counter
+from collections import defaultdict
 
 
 
@@ -25,15 +27,77 @@ admin.add_view(ModelView(models.Albums, db.session))
 def home():
     if current_user.is_authenticated:
         username = current_user.username
+        user_reviews = models.Review.query.filter_by(username=username).all()
     else:
         username = "Guest"
-
+        user_reviews = models.Review.query.all()
 
     albumsList = models.Albums.query.all()
-    album = random.choice(albumsList)
+
+    bestGenre = recomendationAlgorithm(user_reviews, albumsList)
+
+    albums = models.Albums.query.filter_by(genre=bestGenre).all()
+    random_album = random.choice(albums)
+    album = random_album.title
+    artist = random_album.artist
+
+    return render_template("home.html", title="Home", username=username, album = album, artist = artist)
+
+def recomendationAlgorithm(user_reviews, albumsList):
+    data = []
+    genres = []
+    ratingSum = 0
+    ratings = []
+    genre_ratings = defaultdict(int)
+
+    for review in user_reviews:
+        album = review.album
+        rating = review.rating
+        genre = models.Albums.query.filter_by(title=album).first().genre
+        data.append([album, genre, rating])
+
+    for block in data:
+        album = block[0]
+        genre = block[1]
+        rating = block[2]
+        
+        genres.append(genre)
+        ratings.append(rating)
+
+        genre_ratings[genre] += rating
+
+    # find most popular user genre
+    genre_counts = Counter(genres)
+    most_common_genre = genre_counts.most_common(1)[0][0]
+    print(most_common_genre)
+    print()
+
+    # find second most popular user genre
+    genres.pop(genres.index(most_common_genre))
+    genre_counts = Counter(genres)
+    most_common_genre = genre_counts.most_common(1)[0][0]
+    print(most_common_genre)
+    
+    i = 0
+    # Print the sum of ratings for each genre
+    for genre, rating_sum in genre_ratings.items():
+        print(f"Genre: {genre}, Rating Sum: {rating_sum}")
+        
+        if i == 0:
+            ratingSum = (genre,rating_sum)
+        else:
+            if ratingSum[1] < rating_sum:
+                ratingSum = (genre,rating_sum)
+        
+        i += 1
 
 
-    return render_template("home.html", title="Home", username=username, album = album)
+    return ratingSum[0]
+        
+
+
+    
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -107,6 +171,15 @@ def reviews():
     user_reviews = models.Review.query.filter_by(username=username).all()
     return render_template("reviews.html", title="Reviews", reviews=user_reviews)
 
+@app.route("/viewReview/<int:id>", methods=["GET", "POST"])
+@login_required
+def viewReview(id):
+
+    review = models.Review.query.get(id)
+
+    return render_template("viewReview.html", title="Review", review=review)
+
+
 @app.route("/explore", methods=["GET", "POST"])
 def explore():
 
@@ -136,6 +209,17 @@ def newReview():
     
     return render_template("newReview.html", title="New Review", form=form, username=username)
 
+@login_required
+@app.route("/addAlbum", methods=["GET", "POST"])
+def addAlbum():
 
+    form = albumForm()
 
+    if form.validate_on_submit():
+        p = models.Albums(title=form.title.data, artist=form.artist.data, genre = form.genre.data)
+        db.session.add(p)
+        db.session.commit()
+        return redirect(url_for("reviews"))
+    
+    return render_template("newAlbum.html", title="New Album", form=form)
 

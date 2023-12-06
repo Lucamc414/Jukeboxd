@@ -2,24 +2,27 @@
 {% block content %}
 
 <h1 class="px-3">Jukeboxd</h1>
-<div class="px-3">
-  {% if username %}
+
+<div class="data-panel2">
+  <div> 
     <p>Welcome {{ username }}!</p>
-  {% endif %}
-    <p>Welcome to jukeboxd.</p>
-    <img src="{{ url_for('static', filename='vinyl.png') }}" alt="vinyl">
+    <h3>Welcome to jukeboxd. </h3>
+  </div>
 </div>
 
-<div class="search-container">
-    <form class="form-inline">
-      <div class="form-group">
-        <input type="text" class="form-control searchbar" placeholder="Search">
-      </div>
-    </form>
+<div class="container">
+
+  <img src="{{ url_for('static', filename='jukeboxMade.png') }}" class="jukebox" alt="jukebox" onclick="jukebox('{{album}}', '{{artist}}')">
+
+  <div class="data-panel2">
+
+        <p>Jukeboxd is a project developed by Luca McAtarsney.</p>
+        <p>On Jukeboxd you can read and create reviews for your favourite albums! This is a website designed for music
+           enthusiasts who wants to learn and keep up to date with upcoming bands and artists! Click on the Jukebox for a recommended album!</p>
+
+  </div>
 </div>
 
-<img src="{{ url_for('static', filename='jukeboxMade.png') }}" alt="jukebox" onclick="jukebox('{{album.title}}', '{{album.artist}}')">
-
-<input class="button" type="button" value="New Review" onclick="newReview()">
+<!-- <input class="button" type="button" value="New Review" onclick="newReview()"> -->
 
 {% endblock %}

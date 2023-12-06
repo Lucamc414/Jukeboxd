@@ -5,25 +5,17 @@
 <p class="px-3"> Here you can explore. You can search for songs, artists, albums, and playlists
 </p>
 
-<div class="search-container">
-    <form class="form-inline">
-      <div class="form-group">
-        <input type="text" class="form-control searchbar" placeholder="Search">
-      </div>
-    </form>
-</div> 
-
 {% for review in explore %}
-<div class="data-panel">
+<div class="data-panel" onclick="viewReview('{{review.id}}')">
   <div> 
-    <h3>{{review.title}}</h3>
-    <h3 class ="rating">{{review.rating}}/5</h3>
+    <h3>{{review.title}} by {{review.username}}</h3>
+    <p class ="rating">{{review.rating}}/5</p>
     <!-- <button class="button" type="button" value="Delete" onclick="editReview()"></button>   -->
   </div>
-  
-  <h3> {{review.artist}}</h3>
+  <p> Album: {{review.album}}</p>
+  <p> By {{review.artist}}</p>
   <p> {{review.review}} </p>
-  <p> {{review.username}} </p>
+
 </div>
 </div>
 

@@ -31,4 +31,8 @@ class registerForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()], render_kw={"class": "text-box"})
     passwordConfirm = PasswordField('PasswordConfirm', validators=[DataRequired()], render_kw={"class": "text-box"})
     profile_picture = FileField('Profile Picture', validators=[DataRequired(), FileAllowed(['jpg', 'jpeg', 'png'])])
-    
+
+class albumForm(FlaskForm):
+    title = StringField('Album Title', validators=[DataRequired()], render_kw={"class": "text-box"})
+    artist = StringField('Artist/ Band', validators=[DataRequired()], render_kw={"class": "text-box"})
+    genre = StringField('Genre', validators=[DataRequired()], render_kw={"class": "text-box"})

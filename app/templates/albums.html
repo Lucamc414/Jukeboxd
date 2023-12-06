@@ -5,16 +5,21 @@
 <p class="px-3"> Here you can view all the albums in our database.
 </p>
 
-<div class="search-container">
-    <form class="form-inline">
-      <div class="form-group">
-        <input type="text" class="form-control searchbar" placeholder="Search">
-      </div>
-    </form>
+<div class="search-container" id="albums-search">
+
+  <input type="text" class="form-control searchbar" placeholder="Search">
+
 </div> 
 
+
+<div class="add-album-container">
+
+  <input class="button" type="button" value="Add Album" onclick="addAlbum()">
+
+</div>
+
 <div>
-  <table>
+  <table id="albums-table">
     <tr>
       <th>ID</th>
       <th>Album</th>
@@ -31,6 +36,11 @@
     {% endfor %}
   </table>
 </div>
+
+<script>
+  const albumSearch = document.getElementById('album-search');
+  albumSearch.addEventListener('input', filterTable());
+</script>
 
 
 {% endblock %}
