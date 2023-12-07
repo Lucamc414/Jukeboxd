@@ -8,9 +8,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from flask import Flask
 import random
-import os
-import tkinter as tk
-from tkinter import messagebox
 from collections import Counter
 from collections import defaultdict
 from operator import attrgetter

@@ -11,8 +11,6 @@ class reviewForm(FlaskForm):
     choicesList =[]
     with app.app_context():
         albumsList = [album.title for album in models.Albums.query.all()]
-        # print(albumsList)
-        # choicesList = [(album, album) for album in albumsList]
 
         for album in albumsList:
             #get artist of album

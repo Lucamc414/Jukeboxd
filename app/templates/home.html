@@ -1,57 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="px-3">Jukeboxd</h1>
+<h1 class="px-3 heading-centre">Jukeboxd</h1>
 
-<div class="data-panel2">
+<div class="data-panel4">
   <h3>{{username}} welcome to jukeboxd! </h3>
 </div>
 
 <div class="container">
-
-  <img src="{{ url_for('static', filename='jukeboxMade.png') }}" class="jukebox" alt="jukebox" onclick="jukebox('{{album}}', '{{artist}}', '{{bestGenre}}')">
-
-  <div class="data-panel3">
-
-      <p>Jukeboxd is a project developed by Luca McAtarsney.</p>
-      <p>On Jukeboxd you can read and create reviews for your favourite albums! This is a website designed for music enthusiasts who want to learn and keep up to date with upcoming bands and artists! Click on the Jukebox for a recommended album!</p>
-
-  </div>
-    <div class="container">
-      <div class="right-panel">
-        <input class="button vertical" type="button" value="Explore" onclick="refresh()">
-        <input class="button vertical" type="button" value="Reviews" onclick="refresh()">
-        <input class="button vertical" type="button" value="Albums" onclick="refresh()">
-      </div>
-    </div>
-    
-
-</div>
-<!-- <h1 class="px-3">Jukeboxd</h1>
-
-<div class="data-panel2">
-  <div> 
-    <h3>{{username}} welcome to jukeboxd! </h3>
-  </div>
+  <img src="{{ url_for('static', filename='jukeboxMade.png') }}" class="jukebox" alt="a jukebox that if clicked will give you a recommendedation" onclick="jukebox('{{album}}', '{{artist}}', '{{bestGenre}}')">
 </div>
 
-<div class="container">
-
-  <img src="{{ url_for('static', filename='jukeboxMade.png') }}" class="jukebox" alt="jukebox" onclick="jukebox('{{album}}', '{{artist}}', '{{bestGenre}}')">
-
-  <div class="data-panel2">
-
-        <p>Jukeboxd is a project developed by Luca McAtarsney.</p>
-        <p>On Jukeboxd you can read and create reviews for your favourite albums! This is a website designed for music
-           enthusiasts who wants to learn and keep up to date with upcoming bands and artists! Click on the Jukebox for a recommended album!</p>
-
-  </div>
-
-  <input class="button" type="button" value="See more reviews" onclick="refresh()">
-  <input class="button" type="button" value="See more reviews" onclick="refresh()">
-  <input class="button" type="button" value="See more reviews" onclick="refresh()">
-</div> -->
-
-<!-- <input class="button" type="button" value="New Review" onclick="newReview()"> -->
+<div class="data-panel4">
+  <p>Jukeboxd is a project developed by Luca McAtarsney.</p>
+  <p>On Jukeboxd you can read and create reviews for your favourite albums! This is a website designed for music enthusiasts who want to learn and keep up to date with upcoming bands and artists! Click on the Jukebox for a recommended album!</p>
+</div>
 
 {% endblock %}
