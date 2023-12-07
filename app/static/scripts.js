@@ -35,22 +35,7 @@ function viewReview(id)
 
 
 
-function filterTable() {
-  const filterValue = albumSearch.value.toLowerCase();
-  const table = document.getElementById('albums-table');
-  const rows = table.getElementsByTagName('tr');
 
-  for (let i = 0; i < rows.length; i++) {
-    const albumName = rows[i].getElementsByTagName('td')[0].textContent.toLowerCase();
-    if (albumName.includes(filterValue)) {
-      rows[i].style.display = '';
-    } else {
-      rows[i].style.display = 'none';
-    }
-  }
-
-
-}
 
 document.getElementById("album-search").addEventListener("input", function() {
   // Call a function to handle the search logic

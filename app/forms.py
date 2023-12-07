@@ -19,7 +19,6 @@ class reviewForm(FlaskForm):
 
         album = SelectField('Album',choices= choicesList, validators=[DataRequired()])
 
-    artist = StringField('Artist', validators=[DataRequired()], render_kw={"class": "text-box"})
     review = StringField('Review', validators=[DataRequired()], render_kw={"class": "text-box review-box"})
     rating = SelectField('Rating', choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')], validators=[DataRequired()])
 
